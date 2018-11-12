@@ -29,8 +29,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'Emotion Recognition', component: HelloIonicPage },
+      { title: 'Content Recongition', component: ListPage }
     ];
   }
 

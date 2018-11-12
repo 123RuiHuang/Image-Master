@@ -3,23 +3,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    <ion-title>Emotion Recognition</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+<button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
+<button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
+<button ion-button (click)="uploadPhoto()" full color ="danger">Upload</button>
 
-  <h3>Welcome to your first Ionic app!</h3>
-
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
+<p align="center"><img  id = "faceImage"></p>
+<p> {{emotion}}</p>
 
 </ion-content>
