@@ -11,9 +11,7 @@
 <ion-content padding>
 <button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
 <button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
-<button ion-button (click)="uploadPhoto()" full color ="danger">Upload</button>
-
 <p align="center"><img  id = "faceImage"></p>
-<p> {{emotion}}</p>
-
+<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Emotion</button>
+<p>Emotion : {{emotion}}</p>
 </ion-content>

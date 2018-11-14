@@ -8,7 +8,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class HelloIonicPage {
   public base64Image:string;
-  public emotion = "happy";
+  public emotion = "";
  
   constructor(private camera:Camera,private transfer: FileTransfer,private loadingCtrl:LoadingController) {
   }
@@ -68,25 +68,24 @@ export class HelloIonicPage {
     });
     loader.present();
     const filetransfer:FileTransferObject = this.transfer.create();
-
     var random = Math.floor(Math.random()*100);
     // options
     let options: FileUploadOptions = {
       fileKey:'photo',
-      fileName:"myImage_" + random+".jpg",
+      fileName:random+"emotion_dection.jpg",
       chunkedMode:false,
       httpMethod:'post',
       mimeType:'image/jpeg',
       headers:{}
     }
 
-    filetransfer.upload("123",'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001',options)
+    filetransfer.upload(this.base64Image,'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001',options)
         .then((data) => {
-          alert(data);
+          this.emotion = data.response;
           loader.dismiss();
         },(err) => {
           console.log(err);
-          alert(err);
+          alert(err.message);
           loader.dismiss();
         });
   }
