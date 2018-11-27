@@ -3,15 +3,56 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Emotion Recognition</ion-title>
+    <ion-title>Emotion Detection</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-<button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
-<button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
-<p align="center"><img  id = "faceImage"></p>
-<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Emotion</button>
-<p>Emotion : {{emotion}}</p>
+    <ion-card>
+      <img  id = "faceImage">
+      <ion-card-content>
+        <ion-card-title>
+          Emotion:
+          </ion-card-title>
+        <p>
+          {{emotion}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-fab top right edge>
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list>
+          <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+<!--    <p align="center"></p>-->
+<!--    <h4>Emotion : </h4>-->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+            <button ion-button full (click)="takePhoto()" color ="primary" icon-start large>
+                <ion-icon name="camera"></ion-icon>
+                Camera
+            </button>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button full (click)="getPhoto()" color ="primary" icon-start large>
+                <ion-icon name="image"></ion-icon>
+                Album
+            </button>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+            <button ion-button full (click)="uploadPhoto()" color ="secondary" icon-start large>
+                <ion-icon name="qr-scanner"></ion-icon>
+                Recognize Emotion
+            </button>
+        </ion-row>     
+    </ion-grid>
+    
 </ion-content>
