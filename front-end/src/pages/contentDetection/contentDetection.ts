@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileTransferObject, FileUploadOptions} from '@ionic-native/file-transfer';
 import { LoadingController } from 'ionic-angular';
+
 @Component({
-  selector: 'page-hello-ionic',
-  templateUrl: 'hello-ionic.html'
+  selector: 'page-content-detection',
+  templateUrl: 'contentDetection.html'
 })
-export class HelloIonicPage {
+export class ContentDetectionPage {
   public base64Image:string;
-  public emotion = "";
+  public content = "";
  
   constructor(private camera:Camera,private transfer: FileTransfer,private loadingCtrl:LoadingController) {
   }
@@ -27,9 +28,9 @@ export class HelloIonicPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-     let cameraImageSelector = document.getElementById('faceImage');
+     let cameraImageSelector = document.getElementById('contentImage');
      cameraImageSelector.setAttribute('src',this.base64Image);
-     
+     cameraImageSelector.setAttribute('style',"display:block");
     }, (err) => {
      // Handle error
     
@@ -53,8 +54,9 @@ export class HelloIonicPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-     let cameraImageSelector = document.getElementById('faceImage');
+     let cameraImageSelector = document.getElementById('contentImage');
      cameraImageSelector.setAttribute('src',this.base64Image);
+     cameraImageSelector.setAttribute('style',"display:block");
      
     }, (err) => {
      // Handle error
@@ -72,16 +74,16 @@ export class HelloIonicPage {
     // options
     let options: FileUploadOptions = {
       fileKey:'photo',
-      fileName:random+"emotion_dection.jpg",
+      fileName:random+"content_recognition.jpg",
       chunkedMode:false,
       httpMethod:'post',
       mimeType:'image/jpeg',
       headers:{}
     }
 
-    filetransfer.upload(this.base64Image,'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001',options)
+    filetransfer.upload(this.base64Image,'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/contentDetection',options)
         .then((data) => {
-          this.emotion = data.response;
+          this.content = data.response;
           loader.dismiss();
         },(err) => {
           console.log(err);
@@ -89,6 +91,4 @@ export class HelloIonicPage {
           loader.dismiss();
         });
   }
-
-
 }

@@ -2,8 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
+import { EmotionDetectionPage } from '../pages/emotionDetection/emotionDetection';
+import { ContentDetectionPage } from '../pages/contentDetection/contentDetection';
+import { TextDetectionPage } from '../pages/textDetection/textDetection';
+import { VerifyFacePage } from '../pages/verify-face/verify-face'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  rootPage = EmotionDetectionPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -29,8 +31,10 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Emotion Recognition', component: HelloIonicPage },
-      { title: 'Content Recongition', component: ListPage }
+      { title: 'Emotion Detection', component: EmotionDetectionPage },
+      { title: 'Content Detection', component: ContentDetectionPage },
+      { title: 'Text Detection', component: TextDetectionPage},
+      { title: 'Verify Face', component: VerifyFacePage},
     ];
   }
 

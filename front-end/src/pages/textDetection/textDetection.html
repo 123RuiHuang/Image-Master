@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Emotion Recognition</ion-title>
+    <ion-title>Text Detection</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,7 +11,8 @@
 <ion-content padding>
 <button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
 <button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
-<p align="center"><img  id = "faceImage"></p>
-<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Emotion</button>
-<p>Emotion : {{emotion}}</p>
+<img  id = "textImage" style = "display: none">
+<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Text</button>
+<p>Text : {{text}}</p>
 </ion-content>
+

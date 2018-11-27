@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Content Detection</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
+<button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
+<img  id = "contentImage" style="display:none">
+<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Content</button>
+<p>Content: {{content}}</p>
+</ion-content>
+
