@@ -4,19 +4,20 @@ import { FileTransfer, FileTransferObject, FileUploadOptions} from '@ionic-nativ
 import { LoadingController } from 'ionic-angular';
 
 
+
+
 @Component({
-  selector: 'page-text-detection',
-  templateUrl: 'textDetection.html'
+  selector: 'page-celebrity-detection',
+  templateUrl: 'celebrity-detection.html',
 })
-export class TextDetectionPage {
+export class CelebrityDetectionPage {
+  public celebrity = "";
   public base64Image = "";
-  public text = "";
- 
   constructor(private camera:Camera,private transfer: FileTransfer,private loadingCtrl:LoadingController) {
   }
-  
+
   takePhoto(){
-    //this.base64Image="";
+    //this.base64Image = "";
     const options: CameraOptions = {
       quality: 70,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -29,10 +30,13 @@ export class TextDetectionPage {
     }
     
     this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-     let cameraImageSelector = document.getElementById('textImage');
+     let cameraImageSelector = document.getElementById('celebrityImage');
      cameraImageSelector.setAttribute('src',this.base64Image);
      cameraImageSelector.setAttribute('style',"display:block");
+    
     }, (err) => {
      // Handle error
     
@@ -42,7 +46,7 @@ export class TextDetectionPage {
   }
 
   getPhoto(){
-   // this.base64Image = "";
+    //this.base64Image = "";
     const options: CameraOptions = {
       quality: 70,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -59,9 +63,11 @@ export class TextDetectionPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-     let cameraImageSelector = document.getElementById('textImage');
+     let cameraImageSelector = document.getElementById('celebrityImage');
      cameraImageSelector.setAttribute('src',this.base64Image);
-     cameraImageSelector.setAttribute('style',"display: block");
+     cameraImageSelector.setAttribute('style',"display:block");
+    
+
      
     }, (err) => {
      // Handle error
@@ -70,47 +76,52 @@ export class TextDetectionPage {
     let cardTitleSelector = document.getElementById('cardTitle');
     cardTitleSelector.setAttribute('style',"display:none");
   }
-  
+
   uploadPhoto(){
     let loader = this.loadingCtrl.create({
       content:"uploading..."
     });
     loader.present();
-    if(this.base64Image == "") {
+    if(this.base64Image == "") { // the place holder
       let cardTitleSelector = document.getElementById('cardTitle');
       cardTitleSelector.setAttribute('style',"display:none;");
-      setTimeout(() => {
-        loader.dismiss();
-        this.text = "Nothing EXISTS EXCEPT ATOMS AND EMPTY SPACE. Everything else is opinion.";
-        let cardTitleSelector = document.getElementById('cardTitle');
-        cardTitleSelector.setAttribute('style',"text-align:center; display:block");
-      }, 3000);
+        setTimeout(() => {
+          loader.dismiss();
+          this.celebrity = "Mark Zuckerberg";
+          let cardTitleSelector = document.getElementById('cardTitle');
+          cardTitleSelector.setAttribute('style',"text-align:center; display:block");
+        }, 3000);
+    
     }
+
     else {
       const filetransfer:FileTransferObject = this.transfer.create();
       var random = Math.floor(Math.random()*100);
       // options
       let options: FileUploadOptions = {
         fileKey:'photo',
-        fileName:random+"text_dection.jpg",
+        fileName:random+"celebrity_recognition.jpg",
         chunkedMode:false,
         httpMethod:'post',
         mimeType:'image/jpeg',
         headers:{}
       }
-
-      filetransfer.upload(this.base64Image,'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/textDetection',options)
-      .then((data) => {
-        this.text = data.response.replace(/\"/g, "");
-        loader.dismiss();
-        let cardTitleSelector = document.getElementById('cardTitle');
-        cardTitleSelector.setAttribute('style',"text-align:center;display:block");
-      },(err) => {
-        console.log(err);
-        alert(err.message);
-        loader.dismiss();
-      });
-    } 
+  
+  
+      filetransfer.upload(this.base64Image,'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/celebrityDetection',options)
+          .then((data) => {
+            this.celebrity = data.response.replace(/\"/g, "");
+            loader.dismiss();
+            let cardTitleSelector = document.getElementById('cardTitle');
+            cardTitleSelector.setAttribute('style',"text-align:center; display:block;");
+          },(err) => {
+            console.log(err);
+            alert(err.message);
+            loader.dismiss();
+          });
+    }
+    
+   
   }
 
 }

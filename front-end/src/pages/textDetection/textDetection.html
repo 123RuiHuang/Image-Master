@@ -9,10 +9,40 @@
 
 
 <ion-content padding>
-<button ion-button (click)="takePhoto()" full color ="primary">Take Photo</button>
-<button ion-button (click)="getPhoto()" full color ="secondary">Get Photo From Gallery</button>
-<img  id = "textImage" style = "display: none">
-<button ion-button (click)="uploadPhoto()" full color ="danger">Recognize Text</button>
-<p>Text : {{text}}</p>
+  <ion-card >
+    <img  id = "textImage" src="../../assets/imgs/textPlaceHolder.jpg">
+    <ion-card-content>
+      <ion-card-title id = "cardTitle" style="display:none;">
+        Text: {{text}}
+      </ion-card-title>
+      <a>
+      
+      </a>
+    </ion-card-content>
+  </ion-card>
+  
+ 
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+          <button ion-button full (click)="takePhoto()" color ="primary" icon-start large>
+              <ion-icon name="camera"></ion-icon>
+              Camera
+          </button>
+      </ion-col>
+      <ion-col col-6>
+          <button ion-button full (click)="getPhoto()" color ="primary" icon-start large>
+              <ion-icon name="image"></ion-icon>
+              Album
+          </button>
+      </ion-col>
+    </ion-row>
+      <ion-row>
+          <button ion-button full (click)="uploadPhoto()" color ="secondary" icon-start large>
+              <ion-icon name="qr-scanner"></ion-icon>
+              Recognize Text
+          </button>
+      </ion-row>     
+  </ion-grid>
 </ion-content>
 

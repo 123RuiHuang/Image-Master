@@ -5,8 +5,8 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { EmotionDetectionPage } from '../pages/emotionDetection/emotionDetection';
 import { ContentDetectionPage } from '../pages/contentDetection/contentDetection';
 import { TextDetectionPage } from '../pages/textDetection/textDetection';
-import { VerifyFacePage } from '../pages/verify-face/verify-face'
-
+import {CelebrityDetectionPage} from '../pages/celebrity-detection/celebrity-detection';
+import {LandmarkDetectionPage} from '../pages/landmark-detection/landmark-detection';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -34,7 +34,8 @@ export class MyApp {
       { title: 'Emotion Detection', component: EmotionDetectionPage },
       { title: 'Content Detection', component: ContentDetectionPage },
       { title: 'Text Detection', component: TextDetectionPage},
-      { title: 'Verify Face', component: VerifyFacePage},
+      { title: 'Celebrity Detection', component:CelebrityDetectionPage},
+      { title: 'Landmark Detection', component:LandmarkDetectionPage}
     ];
   }
 

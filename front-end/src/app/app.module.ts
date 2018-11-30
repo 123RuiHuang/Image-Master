@@ -5,20 +5,22 @@ import { MyApp } from './app.component';
 import { EmotionDetectionPage } from '../pages/emotionDetection/emotionDetection';
 import { TextDetectionPage } from '../pages/textDetection/textDetection';
 import { ContentDetectionPage } from '../pages/contentDetection/contentDetection';
-import { VerifyFacePage } from '../pages/verify-face/verify-face';
+import {CelebrityDetectionPage} from '../pages/celebrity-detection/celebrity-detection';
+import {LandmarkDetectionPage} from '../pages/landmark-detection/landmark-detection';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera} from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
+import { Base64} from '@ionic-native/base64';
 @NgModule({
   declarations: [
     MyApp,
     EmotionDetectionPage,
     TextDetectionPage,
     ContentDetectionPage,
-    VerifyFacePage
+    CelebrityDetectionPage,
+    LandmarkDetectionPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { File } from '@ionic-native/file';
     EmotionDetectionPage,
     TextDetectionPage,
     ContentDetectionPage,
-    VerifyFacePage
+    CelebrityDetectionPage,
+    LandmarkDetectionPage
   ],
   providers: [
     StatusBar,
@@ -38,6 +41,7 @@ import { File } from '@ionic-native/file';
     Camera,
     FileTransfer, 
     File, 
+    Base64,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

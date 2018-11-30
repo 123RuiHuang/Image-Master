@@ -1,19 +1,19 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Emotion Detection</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content padding>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Landmark Detection</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
     <ion-card >
-      <img  id = "emotionImage" src="../../assets/imgs/emotionPlaceHolder.jpg">
+      <img  id = "landmarkImage" src="../../assets/imgs/landmarkPlaceHolder.jpeg">
       <ion-card-content>
         <ion-card-title id = "cardTitle" style="display:none;">
-          Emotion: {{emotion}}
+          Landmark: {{landmark}}
         </ion-card-title>
         <a>
         
@@ -22,6 +22,7 @@
     </ion-card>
     
    
+  
     <ion-grid>
       <ion-row>
         <ion-col col-6>
@@ -40,9 +41,9 @@
         <ion-row>
             <button ion-button full (click)="uploadPhoto()" color ="secondary" icon-start large>
                 <ion-icon name="qr-scanner"></ion-icon>
-                Recognize Emotion
+                Recognize Landmark
             </button>
         </ion-row>     
     </ion-grid>
+  </ion-content>
 
-</ion-content>
