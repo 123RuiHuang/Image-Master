@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const request = require('request');
+const fs = require('fs')
 var storage = multer.diskStorage({
     destination:function (req, file, cb) {
         cb(null,'uploads');
@@ -67,6 +68,9 @@ var textDetectionOptions = {
 app.use(express.static(__dirname + "/uploads"));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+if(!fs.existsSync('./uploads')) {
+        fs.mkdirSync('./uploads')
+}
 
   function emotionDetection(imageID){
     let ImageUrl = url+imageID;
