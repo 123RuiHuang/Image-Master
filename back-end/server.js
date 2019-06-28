@@ -12,6 +12,7 @@ var storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
+const url = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'
 var upload = multer({storage:storage});
 const FaceSubscrieptionKey = 'a4544cebacbe441c98810e00ae8b4de3';
 const computerVisionSubscrieptionKey = 'ce7ac76dd9c142378342d60bf2181ea7';
@@ -68,7 +69,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
   function emotionDetection(imageID){
-    let ImageUrl = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'+imageID;
+    let ImageUrl = url+imageID;
     console.log(ImageUrl);
     faceDetectionOptions.body = '{"url": ' + '"' + ImageUrl + '"}';
     let emotions = ['anger','contempt','disgust','fear','happiness','neutral','sadness','surprise'];
@@ -104,7 +105,7 @@ app.use(bodyParser.json())
   };
 
   function contentDetection(imageID) {
-        let ImageUrl = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'+imageID;
+        let ImageUrl = url+imageID;
         //console.log(ImageUrl);
         analyzeOptions.body =  '{"url": ' + '"' + ImageUrl + '"}';
         return new Promise(function(resolve,reject){
@@ -130,7 +131,7 @@ app.use(bodyParser.json())
   }
 
   function celebrityDetection(imageID) {
-      let ImageUrl = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'+imageID;
+      let ImageUrl = url+imageID;
       console.log(ImageUrl);
       analyzeOptions.body =  '{"url": ' + '"' + ImageUrl + '"}';
       return new Promise(function(resolve,reject){
@@ -155,7 +156,7 @@ app.use(bodyParser.json())
   }
  
   function landmarkDetection(imageID) {
-    let ImageUrl = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'+imageID;
+    let ImageUrl = url+imageID;
     console.log(ImageUrl);
     analyzeOptions.body =  '{"url": ' + '"' + ImageUrl + '"}';
     return new Promise(function(resolve,reject){
@@ -183,7 +184,7 @@ app.use(bodyParser.json())
   }
 
   function textDetection(imageID) {
-    let ImageUrl = 'http://ec2-34-239-186-142.compute-1.amazonaws.com:3001/'+imageID;
+    let ImageUrl = url+imageID;
     console.log(ImageUrl);
     textDetectionOptions.body= '{"url": ' + '"' + ImageUrl + '"}';
     return new Promise(function(resolve,reject){
